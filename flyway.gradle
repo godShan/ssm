@@ -1,0 +1,10 @@
+flyway {
+    driver = 'com.mysql.jdbc.Driver'
+    url = "jdbc:mysql://127.0.0.1:3306/godShan?zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&characterEncoding=UTF-8"
+    user = 'root'
+    password = '123456'
+    schemas = ['zalljias_credit']
+    table = 'credit_schema_version'
+    locations = ["filesystem:${projectDir}/src/main/resources/migration"]
+    sqlMigrationPrefix = 'MySQL-'
+}

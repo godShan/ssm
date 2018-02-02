@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+    <display-name>Archetype Created Web Application</display-name>
+
+    <!-- Spring和mybatis的配置文件 -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+    <!-- 编码过滤器 -->
+    <filter>
+        <filter-name>encodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <async-supported>true</async-supported>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>encodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <!-- Spring监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <!-- 防止Spring内存溢出监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    </listener>
+
+    <!--log4j配置文件-->
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>classpath:log4j.properties</param-value>
+    </context-param>
+
+    <!-- Spring MVC servlet -->
+    <servlet>
+        <servlet-name>SpringMVC</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/springMVC.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SpringMVC</servlet-name>
+        <!-- 此处可以可以配置成*.do，对应struts的后缀习惯 -->
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.ftl</url-pattern>
+        <url-pattern>*.js</url-pattern>
+        <url-pattern>*.css</url-pattern>
+        <url-pattern>*.html</url-pattern>
+        <url-pattern>*.eot</url-pattern>
+        <url-pattern>*.ttf</url-pattern>
+        <url-pattern>*.woff</url-pattern>
+        <url-pattern>*.ico</url-pattern>
+        <!-- 不拦截的图片类型 -->
+        <url-pattern>*.jpg</url-pattern>
+        <url-pattern>*.png</url-pattern>
+        <url-pattern>*.jpeg</url-pattern>
+        <url-pattern>*.gif</url-pattern>
+        <url-pattern>*.bmp</url-pattern>
+        <!-- 不拦截的视频类型 -->
+        <url-pattern>*.flv</url-pattern>
+        <url-pattern>*.swf</url-pattern>
+        <url-pattern>*.mkv</url-pattern>
+        <url-pattern>*.avi</url-pattern>
+        <url-pattern>*.rm</url-pattern>
+        <url-pattern>*.rmvb</url-pattern>
+        <url-pattern>*.mpeg</url-pattern>
+        <url-pattern>*.mpg</url-pattern>
+        <url-pattern>*.ogg</url-pattern>
+        <url-pattern>*.ogv</url-pattern>
+        <url-pattern>*.mov</url-pattern>
+        <url-pattern>*.wmv</url-pattern>
+        <url-pattern>*.mp4</url-pattern>
+        <url-pattern>*.mp3</url-pattern>
+        <url-pattern>*.wav</url-pattern>
+        <url-pattern>*.mid</url-pattern>
+        <!-- 不拦截的文件类型 -->
+        <url-pattern>*.rar</url-pattern>
+        <url-pattern>*.zip</url-pattern>
+        <url-pattern>*.tar</url-pattern>
+        <url-pattern>*.gz</url-pattern>
+        <url-pattern>*.7z</url-pattern>
+        <url-pattern>*.bz2</url-pattern>
+        <url-pattern>*.cab</url-pattern>
+        <url-pattern>*.iso</url-pattern>
+        <url-pattern>*.doc</url-pattern>
+        <url-pattern>*.docx</url-pattern>
+        <url-pattern>*.xls</url-pattern>
+        <url-pattern>*.xlsx</url-pattern>
+        <url-pattern>*.ppt</url-pattern>
+        <url-pattern>*.pptx</url-pattern>
+        <url-pattern>*.pdf</url-pattern>
+        <url-pattern>*.txt</url-pattern>
+        <url-pattern>*.md</url-pattern>
+        <url-pattern>*.xml</url-pattern>
+    </servlet-mapping>
+
+</web-app>

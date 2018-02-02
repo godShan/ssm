@@ -1,0 +1,23 @@
+<html>
+<head>
+    <title>用户</title>
+</head>
+<body>
+<div>
+    <table>
+        <tr>
+            <th>用户ID</th>
+            <th>用户账号</th>
+            <th>用户真实姓名</th>
+        </tr>
+        <#list userList as user>
+            <tr>
+                <th>${user.id}</th>
+                <th>${user.userName}</th>
+                <th>${user.realName}</th>
+            </tr>
+        </#list>
+    </table>
+</div>
+</body>
+</html>

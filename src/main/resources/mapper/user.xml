@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wys.ssm.dao.UserMapper" >
+    <resultMap id="userVOResultMap" type="com.wys.ssm.entity.VO.UserVO" >
+        <id column="ID" property="id" jdbcType="BIGINT" />
+        <result column="user_name" property="userName" jdbcType="VARCHAR" />
+        <result column="pass_word" property="passWord" jdbcType="VARCHAR" />
+        <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="user_list">
+        ID, user_name, pass_word, real_name
+    </sql>
+
+    <select id="findUserByDTO" resultMap="userVOResultMap">
+        select <include refid="user_list"/>
+        from user
+        where 1=1
+        <if test="dto.userName != null and dto.userName != ''">
+            and user_name = #{dto.userName}
+        </if>
+        <if test="dto.realName != null and dto.realName != ''">
+            and real_name = #{dto.realName}
+        </if>
+    </select>
+
+</mapper>
